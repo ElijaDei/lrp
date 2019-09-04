@@ -1,7 +1,6 @@
 package com.github.elijadei.lrp;
 import com.graphhopper.jsprit.analysis.toolbox.AlgorithmSearchProgressChartListener;
 import com.graphhopper.jsprit.analysis.toolbox.GraphStreamViewer;
-import com.graphhopper.jsprit.analysis.toolbox.Plotter;
 import com.graphhopper.jsprit.analysis.toolbox.StopWatch;
 import com.graphhopper.jsprit.core.algorithm.VehicleRoutingAlgorithm;
 import com.graphhopper.jsprit.core.algorithm.box.Jsprit;
@@ -13,17 +12,20 @@ import com.graphhopper.jsprit.core.problem.solution.VehicleRoutingProblemSolutio
 import com.graphhopper.jsprit.core.problem.vehicle.VehicleImpl;
 import com.graphhopper.jsprit.core.problem.vehicle.VehicleType;
 import com.graphhopper.jsprit.core.problem.vehicle.VehicleTypeImpl;
-import com.graphhopper.jsprit.core.reporting.SolutionPrinter;
 import com.graphhopper.jsprit.core.util.Coordinate;
 import com.graphhopper.jsprit.core.util.Solutions;
 import com.graphhopper.jsprit.instance.reader.CordeauReader;
 import com.graphhopper.jsprit.util.Examples;
 
-import java.util.Arrays;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+import java.io.*;
 import java.util.Collection;
+
 public class Start {
     public static void main(String[] args) {
-
+        new Start().writeTxtFile("input/network.xml");
         Examples.createOutputFolder();
         VehicleRoutingProblem.Builder vrpBuilder = VehicleRoutingProblem.Builder.newInstance(); //ак понятъ эту строчку. почему мз берем один класс, билдер, и запихиваем в него другой обьект. ФииклРутингБилде.зачем?
         new CordeauReader(vrpBuilder).read("input/txtmdvrp.txt");
@@ -68,6 +70,17 @@ public class Start {
         vra.getAlgorithmListeners().addListener(new AlgorithmSearchProgressChartListener("output/progress.png"));
         Collection<VehicleRoutingProblemSolution> solutions = vra.searchSolutions();
         new GraphStreamViewer(vrp, Solutions.bestOf(solutions)).setRenderDelay(50).display();
+    }
+
+    public void writeTxtFile(String finamae) {
+        try {
+            File xmlFile = new File(finamae);
+            JAXBContext jaxbContext = JAXBContext.newInstance(Nodes.class);
+            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+            Nodes node = (Nodes) jaxbUnmarshaller.unmarshal(xmlFile);
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
     }
 
 }
