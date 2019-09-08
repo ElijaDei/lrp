@@ -21,5 +21,5 @@ public class Nodes {
 
     public List<Node> getNodes() {
         return nodes;
-    }
+    }  //почему тут лист, что это значит
 }
