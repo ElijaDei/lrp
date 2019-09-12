@@ -17,11 +17,7 @@ public class Start {
 
         String file = "input/network.xml";
 
-        ArrayList<Nodes> list = new ArrayList<Nodes>();
         Nodes nodeList = FileUtil.readXmlFile(file);
-        list.add(nodeList); //почему нодс?
-
-        FileUtil.readXmlFile(file).getNodes();
 
         FileUtil.writeNodesTxt(nodeList);
 
