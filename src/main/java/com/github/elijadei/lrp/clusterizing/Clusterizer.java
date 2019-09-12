@@ -12,6 +12,10 @@ public class Clusterizer {
 
     private List<Node> nodes;
 
+    public Clusterizer(List<Node> nodes) {
+        this.nodes = nodes;
+    }
+
 
     public List<Node> getClusteredNodes() {
         KMeansPlusPlusClusterer<Node> clusterer = new KMeansPlusPlusClusterer<>(calculateCountOfClusterPoints());
@@ -25,13 +29,9 @@ public class Clusterizer {
 
 
     private List<Node> mapToNodes(List<CentroidCluster<Node>> cluster) {
-        List<double[]> centerPoints = cluster.stream().map(c -> c.getCenter().getPoint()).collect(Collectors.toList());
-        List<Node> centerNodes = new ArrayList<>();
-        centerPoints.forEach(point -> nodes.stream()
-                .filter(node -> node.doesItFeet(point))
-                .findFirst()
-                .ifPresent(centerNodes::add));
-        return centerNodes;
+        return cluster.stream()
+                .map(c -> Node.fromPoint(c.getCenter().getPoint()))
+                .collect(Collectors.toList());
     }
 
 }

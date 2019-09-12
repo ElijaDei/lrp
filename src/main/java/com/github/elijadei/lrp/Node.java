@@ -18,6 +18,14 @@ public class Node implements Clusterable {
     @XmlAttribute(name = "type")
     private Integer type;
 
+    public Node() {
+    }
+
+    public Node(Double x, Double y) {
+        this.x = x;
+        this.y = y;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -39,11 +47,7 @@ public class Node implements Clusterable {
         return new double[]{x, y};
     }
 
-    public boolean doesItFeet(double[] point) {
-        if (point.length == 2) {
-            return x.equals(point[0]) && y.equals(point[1]);
-        } else {
-            throw new RuntimeException("Point is wrong");
-        }
+    public static Node fromPoint(double[] point) {
+       return new Node(point[0], point[1]);
     }
 }
