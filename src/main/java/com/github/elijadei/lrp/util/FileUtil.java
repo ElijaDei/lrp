@@ -27,7 +27,7 @@ public class FileUtil {
     }
 
     public static void writeNodesTxt(Nodes node) throws IOException {
-        FileWriter file = new FileWriter("output.txt");
+        //FileWriter file = new FileWriter("output.txt");
         PrintWriter pw = new PrintWriter("path.txt");
         int count = 1;
         int a = new Random().nextInt(100);
