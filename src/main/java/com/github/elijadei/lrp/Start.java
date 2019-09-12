@@ -24,9 +24,10 @@ public class Start {
             Node node = nodes.getNode();
             // add a line plot to the PlotPanel
             plot.addScatterPlot("center point", Color.RED , new double[][]{node.getPoint()} );
-            nodes.getNodes().forEach(node1 -> {
-                plot.addScatterPlot("center point", Color.BLACK , new double[][]{node1.getPoint()});
-            });
+            for (int i = 0; i <nodes.getNodes().size() ; i++) {
+                Node node1 = nodes.getNodes().get(i);
+                plot.addScatterPlot("center point", new Color(i, i + 5, i + 10) , new double[][]{node1.getPoint()});
+            }
         });
 
         // put the PlotPanel in a JFrame, as a JPanel
