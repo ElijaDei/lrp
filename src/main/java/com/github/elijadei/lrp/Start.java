@@ -3,10 +3,11 @@ package com.github.elijadei.lrp;
 import com.github.elijadei.lrp.clusterizing.Clusterizer;
 import com.github.elijadei.lrp.util.FileUtil;
 import com.github.elijadei.lrp.util.RandomSampling;
+import org.math.plot.Plot2DPanel;
 
+import javax.swing.*;
 import javax.xml.bind.JAXBException;
-import java.io.IOException;
-import java.util.ArrayList;
+import java.awt.*;
 import java.util.List;
 
 public class Start {
@@ -15,9 +16,24 @@ public class Start {
         Nodes nodeList = FileUtil.readXmlFile(file);
         RandomSampling random = new RandomSampling(nodeList);
         List<Node> nodeSample = random.makeSamples();
-        Clusterizer clusterizer = new Clusterizer(nodeSample);
-        List<Node> clusteredNodes = clusterizer.getClusteredNodes();
-        System.out.println(clusteredNodes.size());
+        Clusterizer clusterizer = new Clusterizer(nodeSample, nodeList.getNodes().size());
+
+        List<Nodes> clusteredNodes = clusterizer.getClusteredNodes();
+        Plot2DPanel plot = new Plot2DPanel();
+        clusteredNodes.forEach(nodes -> {
+            Node node = nodes.getNode();
+            // add a line plot to the PlotPanel
+            plot.addScatterPlot("center point", Color.RED , new double[][]{node.getPoint()} );
+            nodes.getNodes().forEach(node1 -> {
+                plot.addScatterPlot("center point", Color.BLACK , new double[][]{node1.getPoint()});
+            });
+        });
+
+        // put the PlotPanel in a JFrame, as a JPanel
+        JFrame frame = new JFrame("a plot panel");
+        frame.setContentPane(plot);
+        frame.setVisible(true);
+
     }
 }
 

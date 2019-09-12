@@ -39,6 +39,12 @@
             <version>3.2</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.github.yannrichet</groupId>
+            <artifactId>JMathPlot</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-impl -->
         <dependency>
             <groupId>com.sun.xml.bind</groupId>

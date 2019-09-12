@@ -50,4 +50,10 @@ public class Node implements Clusterable {
     public static Node fromPoint(double[] point) {
        return new Node(point[0], point[1]);
     }
+
+    @Override
+    public String toString() {
+        return x + " " + y;
+
+    }
 }
