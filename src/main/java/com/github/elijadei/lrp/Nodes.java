@@ -25,17 +25,17 @@ public class Nodes {
         return nodes;
     }
 
-    public void setNode(Node node) {
+    public void setCenter(Node node) {
         this.node = node;
     }
 
-    public Node getNode() {
+    public Node getCenter() {
         return node;
     }
 
     public static Nodes fromCluster(CentroidCluster<Node> cluster) {
         Nodes nodes = new Nodes(cluster.getPoints());
-        nodes.setNode(Node.fromPoint(cluster.getCenter().getPoint()));
+        nodes.setCenter(Node.fromPoint(cluster.getCenter().getPoint()));
         return nodes;
     }
 

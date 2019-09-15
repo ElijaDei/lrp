@@ -18,6 +18,8 @@ public class Node implements Clusterable {
     @XmlAttribute(name = "type")
     private Integer type;
 
+    private Integer distance;
+
     public Node() {
     }
 
@@ -40,6 +42,14 @@ public class Node implements Clusterable {
 
     public Integer getType() {
         return type;
+    }
+
+    public Integer getDistance() {
+        return distance;
+    }
+
+    public void setDistance(Integer distance) {
+        this.distance = distance;
     }
 
     @Override

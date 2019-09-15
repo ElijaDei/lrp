@@ -1,6 +1,8 @@
 package com.github.elijadei.lrp.builder;
 
 import com.github.elijadei.lrp.Node;
+import com.graphhopper.jsprit.analysis.toolbox.GraphStreamViewer;
+import com.graphhopper.jsprit.analysis.toolbox.Plotter;
 import com.graphhopper.jsprit.core.algorithm.VehicleRoutingAlgorithm;
 import com.graphhopper.jsprit.core.algorithm.box.Jsprit;
 import com.graphhopper.jsprit.core.problem.Location;
@@ -16,30 +18,27 @@ import com.graphhopper.jsprit.core.util.Solutions;
 import com.graphhopper.jsprit.io.problem.VrpXMLWriter;
 import com.graphhopper.jsprit.util.Examples;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 public class TSP {
     //List<Nodes> nodes;
-    Node nod;
+    double xc;
+    double yc;
     List<Node> node;
-    int Id = 1;
 
-    public TSP(Node nod, List<Node> nodes, int i) throws FileNotFoundException {
-        this.nod = nod;
+    public TSP(Node nod, List<Node> nodes) {
+        this.xc = nod.getX();
+        this.yc = nod.getY();
         this.node = nodes;
-        this.Id = i;
     }
 
 
-    public void tspBuild(double xc, double yc) throws FileNotFoundException {
-
-        xc = nod.getX();
-        yc = nod.getY();
-
-
+    public void tspBuild() throws FileNotFoundException {
         Examples.createOutputFolder();
         /*
          * get a vehicle type-builder and build a type with the typeId "vehicleType" and a capacity of 2
@@ -70,7 +69,9 @@ public class TSP {
         vrpBuilder.setFleetSize(VehicleRoutingProblem.FleetSize.INFINITE);
 
         VehicleRoutingProblem problem = vrpBuilder.build();
-        VehicleRoutingAlgorithm algorithm = Jsprit.createAlgorithm(problem);
+        VehicleRoutingAlgorithm algorithm = Jsprit.Builder.newInstance(problem)
+                .setProperty(Jsprit.Parameter.ITERATIONS.toString(), "500")
+                .buildAlgorithm();
         Collection<VehicleRoutingProblemSolution> solutions = algorithm.searchSolutions();
 
         /*
@@ -79,19 +80,22 @@ public class TSP {
         VehicleRoutingProblemSolution bestSolution = Solutions.bestOf(solutions);
 
 
-        new VrpXMLWriter(problem, solutions).write("output/problem-with-solution.xml" + Id);
+        ArrayList<VehicleRoutingProblemSolution> bestSolutions = new ArrayList<>();
+        bestSolutions.add(bestSolution);
 
-        SolutionPrinter.print(problem, bestSolution, SolutionPrinter.Print.CONCISE);
+        PrintWriter printWriter = new PrintWriter(new File("output/problem-with-best-solution.txt"));
+        new VrpXMLWriter(problem, solutions).write("output/problem-with-solution.xml");
+        SolutionPrinter.print(printWriter, problem, bestSolution, SolutionPrinter.Print.CONCISE);
 
         /*
          * plot
          */
-        //new Plotter(problem,bestSolution).plot("output/plot.png","simple example");
+        new Plotter(problem, bestSolution).plot("output/plot.png","simple example");
 
         /*
         render problem and solution with GraphStream
          */
-        // new GraphStreamViewer(problem, bestSolution).labelWith(GraphStreamViewer.Label.ID).setRenderDelay(200).display();
+         new GraphStreamViewer(problem, bestSolution).labelWith(GraphStreamViewer.Label.ID).setRenderDelay(200).display();
 
     }
 
