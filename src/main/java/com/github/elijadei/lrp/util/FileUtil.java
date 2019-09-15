@@ -2,6 +2,7 @@ package com.github.elijadei.lrp.util;
 
 import com.github.elijadei.lrp.Node;
 import com.github.elijadei.lrp.Nodes;
+import com.github.elijadei.lrp.clusterizing.Clusterizer;
 import org.apache.logging.log4j.core.util.FileUtils;
 
 import javax.xml.bind.JAXBContext;
@@ -21,7 +22,7 @@ public class FileUtil {
 
     public static Nodes readXmlFile(String filename) throws JAXBException {
         File xmlFile = new File(filename);
-        JAXBContext jaxbContext = JAXBContext.newInstance(Nodes.class); //почему .класс там
+        JAXBContext jaxbContext = JAXBContext.newInstance(Nodes.class);
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
         return (Nodes) jaxbUnmarshaller.unmarshal(xmlFile);
     }
@@ -29,10 +30,12 @@ public class FileUtil {
     public static void writeNodesTxt(Nodes node) throws IOException {
         //FileWriter file = new FileWriter("output.txt");
         PrintWriter pw = new PrintWriter("path.txt");
+
         int count = 1;
         int a = new Random().nextInt(100);
         //todo
-        List<Node> ll= node.getNodes();  //почему лист а не аррайлист и почему моделъ нод.гетнодс мы записываем ш нод лист?
+        List<Node> ll= node.getNodes();  //
+
         for(Node s : ll) {
             int r = new Random().nextInt(100);
             pw.println(count++ + " " +  s.getX() + " " + s.getY() + " " + 0 + " " + r + " " + 1 +" " + 2 +" " + 1 +" " + 2);
