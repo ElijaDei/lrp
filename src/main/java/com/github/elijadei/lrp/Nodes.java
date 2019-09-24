@@ -1,6 +1,7 @@
 package com.github.elijadei.lrp;
 
 import org.apache.commons.math3.ml.clustering.CentroidCluster;
+import org.apache.commons.math3.ml.clustering.Cluster;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -36,6 +37,13 @@ public class Nodes {
     public static Nodes fromCluster(CentroidCluster<Node> cluster) {
         Nodes nodes = new Nodes(cluster.getPoints());
         nodes.setCenter(Node.fromPoint(cluster.getCenter().getPoint()));
+        return nodes;
+    }
+
+//FOR DBSCAN
+    public static Nodes fromClusterDB(Cluster<Node> cluster) {
+        Nodes nodes = new Nodes(cluster.getPoints());
+        nodes.getNodes();
         return nodes;
     }
 

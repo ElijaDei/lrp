@@ -90,12 +90,12 @@ public class TSP {
         /*
          * plot
          */
-        new Plotter(problem, bestSolution).plot("output/plot.png","simple example");
+       // new Plotter(problem, bestSolution).plot("output/plot.png","simple example");
 
         /*
         render problem and solution with GraphStream
          */
-         new GraphStreamViewer(problem, bestSolution).labelWith(GraphStreamViewer.Label.ID).setRenderDelay(200).display();
+     //    new GraphStreamViewer(problem, bestSolution).labelWith(GraphStreamViewer.Label.ID).setRenderDelay(200).display();
 
     }
 

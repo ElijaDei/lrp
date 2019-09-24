@@ -1,33 +1,46 @@
 package com.github.elijadei.lrp;
 
+import com.github.elijadei.lrp.builder.RouteBuilder;
 import com.github.elijadei.lrp.builder.TSP;
 import com.github.elijadei.lrp.clusterizing.Clusterizer;
+import com.github.elijadei.lrp.clusterizing.DBSCAN;
 import com.github.elijadei.lrp.clusterizing.DistanceMeasurement;
 import com.github.elijadei.lrp.util.FileUtil;
+import com.github.elijadei.lrp.util.InputTxt;
 import com.github.elijadei.lrp.util.RandomSampling;
+import com.github.elijadei.lrp.util.Routing_Model;
 import org.math.plot.Plot2DPanel;
 
 import javax.swing.*;
 import javax.xml.bind.JAXBException;
 import java.awt.*;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import java.util.Random;
 
 public class Start {
-    public static void main(String[] args) throws JAXBException, FileNotFoundException {
+    public static void main(String[] args) throws JAXBException, IOException {
         String file = "input/network.xml";
         Nodes nodeList = FileUtil.readXmlFile(file);
         RandomSampling random = new RandomSampling(nodeList);
         List<Node> nodeSample = random.makeSamples();
         Clusterizer clusterizer = new Clusterizer(nodeSample, nodeList.getNodes().size());
-
+       // DBSCAN clusterizer = new DBSCAN(nodeSample, nodeList.getNodes().size());
+/*
+        RouteBuilder rb =new RouteBuilder("input/p11a.txt");
+        long lon =System.currentTimeMillis();
+        rb.buildRoute();
+        long after=System.currentTimeMillis();
+        System.out.println(after-lon);
+*/
         PrintWriter cntr = new PrintWriter("cntr.txt");
 
         List<Nodes> clusteredNodes = clusterizer.getClusteredNodes();
         DistanceMeasurement.calculateDistance(clusteredNodes);
 
+        Routing_Model model = InputTxt.loadLR("input/r5000_2.dat");
 
         for (Nodes nds : clusteredNodes) {
             cntr.println(nds.getCenter()); //nicht alle nods, warum ?
