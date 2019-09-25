@@ -1,7 +1,7 @@
 package com.github.elijadei.lrp.clusterizing;
 
-import com.github.elijadei.lrp.Node;
-import com.github.elijadei.lrp.Nodes;
+import com.github.elijadei.lrp.model.Node;
+import com.github.elijadei.lrp.model.Nodes;
 import org.apache.commons.math3.ml.clustering.CentroidCluster;
 import org.apache.commons.math3.ml.clustering.KMeansPlusPlusClusterer;
 

@@ -1,7 +1,7 @@
 package com.github.elijadei.lrp.util;
 
-import com.github.elijadei.lrp.Node;
-import com.github.elijadei.lrp.Nodes;
+import com.github.elijadei.lrp.model.Node;
+import com.github.elijadei.lrp.model.Nodes;
 
 import java.util.ArrayList;
 import java.util.List;

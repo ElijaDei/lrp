@@ -1,4 +1,4 @@
-package com.github.elijadei.lrp;
+package com.github.elijadei.lrp.model;
 
 import org.apache.commons.math3.ml.clustering.CentroidCluster;
 import org.apache.commons.math3.ml.clustering.Cluster;

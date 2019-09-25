@@ -1,17 +1,12 @@
 package com.github.elijadei.lrp.builder;
 
-import com.github.elijadei.lrp.Node;
-import com.github.elijadei.lrp.Nodes;
 import com.github.elijadei.lrp.clusterizing.Clusterizer;
-import com.graphhopper.jsprit.analysis.toolbox.AlgorithmSearchProgressChartListener;
 import com.graphhopper.jsprit.analysis.toolbox.GraphStreamViewer;
 import com.graphhopper.jsprit.analysis.toolbox.StopWatch;
 import com.graphhopper.jsprit.core.algorithm.VehicleRoutingAlgorithm;
-import com.graphhopper.jsprit.core.algorithm.box.Jsprit;
 import com.graphhopper.jsprit.core.algorithm.listener.VehicleRoutingAlgorithmListeners;
 import com.graphhopper.jsprit.core.problem.Location;
 import com.graphhopper.jsprit.core.problem.VehicleRoutingProblem;
-import com.graphhopper.jsprit.core.problem.solution.VehicleRoutingProblemSolution;
 import com.graphhopper.jsprit.core.problem.vehicle.VehicleImpl;
 import com.graphhopper.jsprit.core.problem.vehicle.VehicleType;
 import com.graphhopper.jsprit.core.problem.vehicle.VehicleTypeImpl;
@@ -23,7 +18,6 @@ import com.graphhopper.jsprit.io.algorithm.VehicleRoutingAlgorithms;
 import com.graphhopper.jsprit.util.Examples;
 
 import java.util.Collection;
-import java.util.List;
 
 public class RouteBuilder {
    Clusterizer clusterizer;

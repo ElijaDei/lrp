@@ -1,19 +1,12 @@
 package com.github.elijadei.lrp.util;
 
-import com.github.elijadei.lrp.Node;
-import com.github.elijadei.lrp.Nodes;
-import com.github.elijadei.lrp.clusterizing.Clusterizer;
-import org.apache.logging.log4j.core.util.FileUtils;
+import com.github.elijadei.lrp.model.Node;
+import com.github.elijadei.lrp.model.Nodes;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.*;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 

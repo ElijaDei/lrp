@@ -1,14 +1,12 @@
 package com.github.elijadei.lrp;
 
-import com.github.elijadei.lrp.builder.RouteBuilder;
 import com.github.elijadei.lrp.builder.TSP;
 import com.github.elijadei.lrp.clusterizing.Clusterizer;
-import com.github.elijadei.lrp.clusterizing.DBSCAN;
-import com.github.elijadei.lrp.clusterizing.DistanceMeasurement;
+import com.github.elijadei.lrp.clusterizing.Grouparizer;
+import com.github.elijadei.lrp.model.Node;
+import com.github.elijadei.lrp.model.Nodes;
 import com.github.elijadei.lrp.util.FileUtil;
-import com.github.elijadei.lrp.util.InputTxt;
 import com.github.elijadei.lrp.util.RandomSampling;
-import com.github.elijadei.lrp.util.Routing_Model;
 import org.math.plot.Plot2DPanel;
 
 import javax.swing.*;
@@ -38,9 +36,6 @@ public class Start {
         PrintWriter cntr = new PrintWriter("cntr.txt");
 
         List<Nodes> clusteredNodes = clusterizer.getClusteredNodes();
-        DistanceMeasurement.calculateDistance(clusteredNodes);
-
-        Routing_Model model = InputTxt.loadLR("input/r5000_2.dat");
 
         for (Nodes nds : clusteredNodes) {
             cntr.println(nds.getCenter()); //nicht alle nods, warum ?

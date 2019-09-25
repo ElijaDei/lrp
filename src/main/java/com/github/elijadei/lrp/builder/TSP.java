@@ -1,8 +1,6 @@
 package com.github.elijadei.lrp.builder;
 
-import com.github.elijadei.lrp.Node;
-import com.graphhopper.jsprit.analysis.toolbox.GraphStreamViewer;
-import com.graphhopper.jsprit.analysis.toolbox.Plotter;
+import com.github.elijadei.lrp.model.Node;
 import com.graphhopper.jsprit.core.algorithm.VehicleRoutingAlgorithm;
 import com.graphhopper.jsprit.core.algorithm.box.Jsprit;
 import com.graphhopper.jsprit.core.problem.Location;
