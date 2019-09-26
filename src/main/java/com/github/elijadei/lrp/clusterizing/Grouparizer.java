@@ -18,13 +18,27 @@ public class Grouparizer {
         this.points = points;
     }
 
+    public List<List<Point>> regroup(List<Point> centers) {
+        List<List<Point>> groups = new ArrayList<>();
+        centers.forEach(center -> {
+            List<Point> group = findNearest(center, this.minCountInGroup);
+            points.removeAll(group);
+            groups.add(group);
+        });
+        if (!points.isEmpty()) {
+            addPointsToNearestGroup(groups);
+            this.points.clear();
+        }
+        return groups;
+    }
+
     public List<List<Point>> groupPointsByDistance() {
         List<List<Point>> groupedPoints = new ArrayList<>();
         while (!this.points.isEmpty()) {
             List<Point> group;
             if (this.points.size() >= this.minCountInGroup) {
                 Point mainPoint = this.points.remove(0);
-                group = findNearest(mainPoint);
+                group = findNearest(mainPoint, this.minCountInGroup - 1);
                 this.points.removeAll(group);
                 group.add(mainPoint);
                 groupedPoints.add(group);
@@ -51,10 +65,10 @@ public class Grouparizer {
         });
     }
 
-    private List<Point> findNearest(Point point) {
+    private List<Point> findNearest(Point point, Integer count) {
         return points.stream()
                 .sorted((p1, p2) -> comparePoints(point, p1, p2))
-                .limit(this.minCountInGroup - 1)
+                .limit(count)
                 .collect(Collectors.toList());
 
     }
