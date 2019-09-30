@@ -8,9 +8,17 @@ public class Point implements Clusterable {
 
     private Double y;
 
+    private Integer demand;
+
     public Point(Double x, Double y) {
         this.x = x;
         this.y = y;
+    }
+
+    public Point(Double x, Double y, Integer demand) {
+        this.x = x;
+        this.y = y;
+        this.demand = demand;
     }
 
     @Override

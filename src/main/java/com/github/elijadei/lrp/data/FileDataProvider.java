@@ -34,6 +34,6 @@ public class FileDataProvider implements DataProvider {
     }
 
     private Point fromNodeRouting(NodeRouting node) {
-        return new Point(node.x, node.y);
+        return new Point(node.x, node.y, node.demand);
     }
 }
