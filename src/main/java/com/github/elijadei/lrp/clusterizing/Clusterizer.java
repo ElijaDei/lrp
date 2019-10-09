@@ -4,7 +4,6 @@ import com.github.elijadei.lrp.model.Node;
 import com.github.elijadei.lrp.model.Nodes;
 import org.apache.commons.math3.ml.clustering.CentroidCluster;
 import org.apache.commons.math3.ml.clustering.KMeansPlusPlusClusterer;
-
 import java.util.List;
 import java.util.stream.Collectors;
 

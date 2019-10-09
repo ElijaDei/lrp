@@ -29,9 +29,9 @@ public class RouteBuilder {
     */
 
 
-    int nrVehicles = 24;
-    int capacity = 2500;
-    int depotcounter = 500;
+    int nrVehicles = 1000;
+    int capacity = 25000;
+    int depotcounter = 10;
 
 
     private String file;

@@ -38,7 +38,7 @@ public class Start {
         List<Nodes> clusteredNodes = clusterizer.getClusteredNodes();
 
         for (Nodes nds : clusteredNodes) {
-            cntr.println(nds.getCenter()); //nicht alle nods, warum ?
+            cntr.println(nds.getCenter());
         }
 //toString().replace("[", "").replace("]", "") + " , " + nds.getNodes().toString().replace("[", "").replace("]", "")
 

@@ -26,6 +26,10 @@ public class Point implements Clusterable {
         return new double[]{this.x, this.y};
     }
 
+    public Integer getDemand() {
+        return new Integer(this.demand);
+    }
+
     public static Point fromMathPoint(double[] mathPoint) {
         return new Point(mathPoint[0], mathPoint[1]);
     }

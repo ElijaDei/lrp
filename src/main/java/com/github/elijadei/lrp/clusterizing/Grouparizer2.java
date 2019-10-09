@@ -1,27 +1,41 @@
 package com.github.elijadei.lrp.clusterizing;
 
+
 import com.github.elijadei.lrp.model.Point;
 import org.apache.commons.math3.util.MathArrays;
 
+import java.awt.geom.Point2D;
 import java.util.*;
 import java.util.stream.Collectors;
 
 
-public class Grouparizer {
-
-    private Integer minCountInGroup;
+public class Grouparizer2 {
 
     private List<Point> points;
+    private Integer minCountsPoints;
+    private Integer minDemand;
 
-    public Grouparizer(Integer minCountInGroup, List<Point> points) {
-        this.minCountInGroup = minCountInGroup;
+
+    public Grouparizer2( Integer minCountsPoints,List<Point> points, Integer minDemand) {
+        this.minCountsPoints = minCountsPoints;
         this.points = points;
+        this.minDemand = minDemand;
+    }
+
+
+
+    //find random point
+    public ArrayList<Point> randPoint(){
+        ArrayList<Point> newPoint= new ArrayList<>();
+        int newSeed =new Random().nextInt(this.points.size());
+        newPoint.add(this.points.get(newSeed));
+        return newPoint;
     }
 
     public List<List<Point>> regroup(List<Point> centers) {
         List<List<Point>> groups = new ArrayList<>();
         centers.forEach(center -> {
-            List<Point> group = findNearest(center, this.minCountInGroup);
+            List<Point> group = findNearest(center, this.minCountsPoints);
             points.removeAll(group);
             groups.add(group);
         });
@@ -34,11 +48,13 @@ public class Grouparizer {
 
     public List<List<Point>> groupPointsByDistance() {
         List<List<Point>> groupedPoints = new ArrayList<>();
+        Integer groupDemand=0;
         while (!this.points.isEmpty()) {
             List<Point> group;
-            if (this.points.size() >= this.minCountInGroup) {
-                Point mainPoint = this.points.remove(0);
-                group = findNearest(mainPoint, this.minCountInGroup - 1);
+            if (this.points.size() >= this.minCountsPoints || groupDemand<=this.minDemand) {
+                Point mainPoint = this.points.remove(0); //randPoint?
+                groupDemand=mainPoint.getDemand();
+                group = findNearest(mainPoint, this.minCountsPoints - 1);
                 this.points.removeAll(group);
                 group.add(mainPoint);
                 groupedPoints.add(group);
@@ -69,6 +85,7 @@ public class Grouparizer {
     private List<Point> findNearest(Point point, Integer count) {
         return points.stream()
                 .sorted((p1, p2) -> comparePoints(point, p1, p2))
+
                 .limit(count)
                 .collect(Collectors.toList());
     }
@@ -81,3 +98,7 @@ public class Grouparizer {
     }
 
 }
+
+
+
+
