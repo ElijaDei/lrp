@@ -1,6 +1,7 @@
 package com.github.elijadei.lrp.builder;
 
 import com.github.elijadei.lrp.model.Node;
+import com.graphhopper.jsprit.analysis.toolbox.GraphStreamViewer;
 import com.graphhopper.jsprit.core.algorithm.VehicleRoutingAlgorithm;
 import com.graphhopper.jsprit.core.algorithm.box.Jsprit;
 import com.graphhopper.jsprit.core.problem.Location;
@@ -93,7 +94,7 @@ public class TSP {
         /*
         render problem and solution with GraphStream
          */
-     //    new GraphStreamViewer(problem, bestSolution).labelWith(GraphStreamViewer.Label.ID).setRenderDelay(200).display();
+         new GraphStreamViewer(problem, bestSolution).labelWith(GraphStreamViewer.Label.ID).setRenderDelay(200).display();
 
     }
 
