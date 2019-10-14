@@ -19,6 +19,7 @@ public class SortPoint {
         for (int i = 0; i < points.size(); i++) {
             data[i] = points.get(i);
         }
+
         for (int i = 0; i < data.length; i++) {
             keys[i] = coordinates(data[i]);
         }

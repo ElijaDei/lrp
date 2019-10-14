@@ -21,10 +21,27 @@ public class Point implements Clusterable {
         this.demand = demand;
     }
 
+
+    public Integer getDemand() {
+        return demand;
+    }
+
+    public double getX() {
+
+        return x;
+    }
+    public double getY() {
+
+        return y;
+    }
+
+
+
     @Override
     public double[] getPoint() {
         return new double[]{this.x, this.y};
     }
+
 
     public static Point fromMathPoint(double[] mathPoint) {
         return new Point(mathPoint[0], mathPoint[1]);

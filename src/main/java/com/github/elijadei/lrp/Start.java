@@ -34,11 +34,11 @@ public class Start {
         System.out.println(after-lon);
 */
         PrintWriter cntr = new PrintWriter("cntr.txt");
-
+//node= centr and nodes are point
         List<Nodes> clusteredNodes = clusterizer.getClusteredNodes();
 
         for (Nodes nds : clusteredNodes) {
-            cntr.println(nds.getCenter()); //nicht alle nods, warum ?
+            cntr.println(nds.getCenter()); //
         }
 //toString().replace("[", "").replace("]", "") + " , " + nds.getNodes().toString().replace("[", "").replace("]", "")
 

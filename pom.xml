@@ -39,6 +39,8 @@
             <version>3.2</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/weka/weka -->
+
         <dependency>
             <groupId>com.github.yannrichet</groupId>
             <artifactId>JMathPlot</artifactId>
