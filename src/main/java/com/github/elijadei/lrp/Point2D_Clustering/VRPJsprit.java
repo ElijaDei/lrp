@@ -101,7 +101,7 @@ public class VRPJsprit {
         /*
         render problem and solution with GraphStream
          */
-         //new GraphStreamViewer(problem, bestSolution).labelWith(GraphStreamViewer.Label.ID).setRenderDelay(200).display();
+         new GraphStreamViewer(problem, bestSolution).labelWith(GraphStreamViewer.Label.ID).setRenderDelay(200).display();
 
     }
 
