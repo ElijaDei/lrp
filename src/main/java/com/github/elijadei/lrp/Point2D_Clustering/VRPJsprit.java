@@ -1,6 +1,5 @@
 package com.github.elijadei.lrp.Point2D_Clustering;
 
-import com.github.elijadei.lrp.model.Node;
 import com.github.elijadei.lrp.model.Point;
 import com.graphhopper.jsprit.analysis.toolbox.GraphStreamViewer;
 import com.graphhopper.jsprit.core.algorithm.VehicleRoutingAlgorithm;
@@ -15,13 +14,8 @@ import com.graphhopper.jsprit.core.problem.vehicle.VehicleType;
 import com.graphhopper.jsprit.core.problem.vehicle.VehicleTypeImpl;
 import com.graphhopper.jsprit.core.reporting.SolutionPrinter;
 import com.graphhopper.jsprit.core.util.Solutions;
-import com.graphhopper.jsprit.io.problem.VrpXMLWriter;
 import com.graphhopper.jsprit.util.Examples;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -39,7 +33,7 @@ public class VRPJsprit {
     }
 
 
-    public void tspBuild() throws FileNotFoundException {
+    public void tspBuild() {
         Examples.createOutputFolder();
         /*
          * get a vehicle type-builder and build a type with the typeId "vehicleType" and a capacity of 2

@@ -14,8 +14,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.util.List;
-import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class TestStart {
 
@@ -40,28 +38,13 @@ public class TestStart {
         System.setOut(new PrintStream(new BufferedOutputStream(new FileOutputStream("output500.txt"))));
 
         groupWithDepots.forEach(points ->
-                {
-                    Point depot = points.getDepot();
-                    VRPJsprit tsp;
-                    tsp = new VRPJsprit(depot, points.getGroup());
-                    try {
-                        tsp.tspBuild();
-
-
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
-                });
+        {
+            Point depot = points.getDepot();
+            VRPJsprit tsp;
+            tsp = new VRPJsprit(depot, points.getGroup());
+            tsp.tspBuild();
+        });
     }
-
-
-
-
-    private static List<Point> getCenters(List<GroupWithDepot> groupWithDepots) {
-        return groupWithDepots.stream().map(GroupWithDepot::getDepot).collect(Collectors.toList());
-    }
-
-
 }
 
 

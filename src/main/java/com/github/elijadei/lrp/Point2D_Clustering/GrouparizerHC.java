@@ -1,7 +1,6 @@
 package com.github.elijadei.lrp.Point2D_Clustering;
 
 import com.github.elijadei.lrp.clusterizing.SortPoint;
-import com.github.elijadei.lrp.model.Point;
 import smile.neighbor.KDTree;
 import smile.neighbor.Neighbor;
 
@@ -9,28 +8,19 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class GrouparizerHC {
 
     private Integer minCountInGroup;
-    private List<Point> points;
     private  List<Point2D.Double> centrs = new ArrayList<>();
 
     public List<Point2D.Double> getCentrs() {
         return centrs;
     }
 
-    public GrouparizerHC(Integer minCountInGroup, List<Point> points) {
+    public GrouparizerHC(Integer minCountInGroup) {
         this.minCountInGroup = minCountInGroup;
-        this.points = points;
     }
-
-
-    List<Point2D> coordinates = new ArrayList<>();
-   // List<Point2D> list = new ArrayList<>();
-
-
 
     //group coordinates
     public List<List<Point2D>> points2GroupsByDistance(List<Point2D> list) {

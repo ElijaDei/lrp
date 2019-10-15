@@ -15,10 +15,6 @@ public class GroupWithDepot {
         this.depot = depot;
         this.group = group;
     }
-    public GroupWithDepot(Point2D depot, List<Point2D> group2D) {
-        this.depot2D = depot2D;
-        this.group2D = group2D;
-    }
 
     public Point getDepot() {
         return depot;
@@ -43,6 +39,6 @@ public class GroupWithDepot {
         return group2D;
     }
     public void setGroup2D(List<Point2D> group) {
-        this.group2D = group2D;
+        this.group2D = group;
     }
 }
