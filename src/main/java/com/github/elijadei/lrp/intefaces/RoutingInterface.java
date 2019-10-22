@@ -5,5 +5,5 @@ import com.github.elijadei.lrp.model.Group;
 import java.util.List;
 
 public interface RoutingInterface {
-    void buildRoutes(List<Group> pointGroups);
+    Integer buildRoutes(List<Group> pointGroups);
 }
