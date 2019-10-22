@@ -1,0 +1,9 @@
+package com.github.elijadei.lrp.intefaces;
+
+import com.github.elijadei.lrp.model.Group;
+
+import java.util.List;
+
+public interface RoutingInterface {
+    void buildRoutes(List<Group> pointGroups);
+}
