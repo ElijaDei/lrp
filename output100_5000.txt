@@ -1,0 +1,35 @@
+2019-10-17 12:38:46,183 INFO  [main] problem.VehicleRoutingProblem - setup problem: [fleetSize=INFINITE][#jobs=100][#vehicles=1][#vehicleTypes=1][transportCost=[name=crowFlyCosts]][activityCosts=com.graphhopper.jsprit.core.problem.cost.WaitingTimeCosts@5552768b]
+2019-10-17 12:38:46,516 INFO  [main] algorithm.VehicleRoutingAlgorithm - algorithm starts: [maxIterations=500]
+2019-10-17 12:38:46,519 INFO  [main] algorithm.InsertionInitialSolutionFactory - create initial solution
+2019-10-17 12:38:47,006 INFO  [main] algorithm.VehicleRoutingAlgorithm - iterations start
+2019-10-17 12:38:47,008 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 1
+2019-10-17 12:38:47,073 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 2
+2019-10-17 12:38:47,491 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 4
+2019-10-17 12:38:47,574 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 8
+2019-10-17 12:38:47,919 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 16
+2019-10-17 12:38:48,608 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 32
+2019-10-17 12:38:49,998 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 64
+2019-10-17 12:38:53,414 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 128
+2019-10-17 12:38:55,651 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 256
+2019-10-17 12:38:59,871 INFO  [main] algorithm.VehicleRoutingAlgorithm - iterations end at 500 iterations
+2019-10-17 12:38:59,872 INFO  [main] algorithm.VehicleRoutingAlgorithm - took 13.355 seconds
++--------------------------+
+| problem                  |
++---------------+----------+
+| indicator     | value    |
++---------------+----------+
+| noJobs        | 100      | 
+| noServices    | 100      | 
+| noShipments   | 0        | 
+| noBreaks      | 0        | 
+| fleetsize     | INFINITE | 
++--------------------------+
++----------------------------------------------------------+
+| solution                                                 |
++---------------+------------------------------------------+
+| indicator     | value                                    |
++---------------+------------------------------------------+
+| costs         | 146.96947397940002                       | 
+| noVehicles    | 5                                        | 
+| unassgndJobs  | 0                                        | 
++----------------------------------------------------------+

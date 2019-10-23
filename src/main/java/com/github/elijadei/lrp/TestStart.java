@@ -21,7 +21,8 @@ public class TestStart {
         DataProvider dataProvider = new FileDataProvider("input/r5000_2_test.dat");
 
         //grouping
-        Grouparizer grouparizer = new Grouparizer(500, dataProvider.getPoints());
+        Grouparizer grouparizer = new Grouparizer(100
+                , dataProvider.getPoints());
         List<List<Point>> lists = grouparizer.groupPointsByDistance();
 
         //find depots
@@ -29,13 +30,12 @@ public class TestStart {
 
         //depot with x and y  and group with size
         List<GroupWithDepot> groupWithDepots = depotIndicator.groupWithDepot();
-
         //List<List<Point>> lists2 = grouparizer.regroup(getCenters(groupWithDepots));
         //depotIndicator = new DepotIndicator(lists2);
 
         new Plotter(depotIndicator.groupWithDepot()).plot();
 
-        System.setOut(new PrintStream(new BufferedOutputStream(new FileOutputStream("output500.txt"))));
+        System.setOut(new PrintStream(new BufferedOutputStream(new FileOutputStream("output100_5000.txt"))));
 
         groupWithDepots.forEach(points ->
         {

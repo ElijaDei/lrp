@@ -1,0 +1,105 @@
+2019-10-16 13:55:54,734 INFO  [main] problem.VehicleRoutingProblem - setup problem: [fleetSize=INFINITE][#jobs=100][#vehicles=1][#vehicleTypes=1][transportCost=[name=crowFlyCosts]][activityCosts=com.graphhopper.jsprit.core.problem.cost.WaitingTimeCosts@5552768b]
+2019-10-16 13:55:54,955 INFO  [main] algorithm.VehicleRoutingAlgorithm - algorithm starts: [maxIterations=500]
+2019-10-16 13:55:54,957 INFO  [main] algorithm.InsertionInitialSolutionFactory - create initial solution
+2019-10-16 13:55:55,316 INFO  [main] algorithm.VehicleRoutingAlgorithm - iterations start
+2019-10-16 13:55:55,317 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 1
+2019-10-16 13:55:55,363 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 2
+2019-10-16 13:55:55,715 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 4
+2019-10-16 13:55:55,804 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 8
+2019-10-16 13:55:56,051 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 16
+2019-10-16 13:55:56,316 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 32
+2019-10-16 13:55:56,728 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 64
+2019-10-16 13:55:57,652 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 128
+2019-10-16 13:55:58,800 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 256
+2019-10-16 13:56:00,591 INFO  [main] algorithm.VehicleRoutingAlgorithm - iterations end at 500 iterations
+2019-10-16 13:56:00,592 INFO  [main] algorithm.VehicleRoutingAlgorithm - took 5.636 seconds
++--------------------------+
+| problem                  |
++---------------+----------+
+| indicator     | value    |
++---------------+----------+
+| noJobs        | 100      | 
+| noServices    | 100      | 
+| noShipments   | 0        | 
+| noBreaks      | 0        | 
+| fleetsize     | INFINITE | 
++--------------------------+
++----------------------------------------------------------+
+| solution                                                 |
++---------------+------------------------------------------+
+| indicator     | value                                    |
++---------------+------------------------------------------+
+| costs         | 146.96947397940002                       | 
+| noVehicles    | 5                                        | 
+| unassgndJobs  | 0                                        | 
++----------------------------------------------------------+
+2019-10-16 13:56:42,480 INFO  [main] problem.VehicleRoutingProblem - setup problem: [fleetSize=INFINITE][#jobs=100][#vehicles=1][#vehicleTypes=1][transportCost=[name=crowFlyCosts]][activityCosts=com.graphhopper.jsprit.core.problem.cost.WaitingTimeCosts@11930206]
+2019-10-16 13:56:42,491 INFO  [main] algorithm.VehicleRoutingAlgorithm - algorithm starts: [maxIterations=500]
+2019-10-16 13:56:42,492 INFO  [main] algorithm.InsertionInitialSolutionFactory - create initial solution
+2019-10-16 13:56:42,584 INFO  [main] algorithm.VehicleRoutingAlgorithm - iterations start
+2019-10-16 13:56:42,585 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 1
+2019-10-16 13:56:42,600 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 2
+2019-10-16 13:56:42,608 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 4
+2019-10-16 13:56:42,662 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 8
+2019-10-16 13:56:42,760 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 16
+2019-10-16 13:56:42,938 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 32
+2019-10-16 13:56:43,175 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 64
+2019-10-16 13:56:43,650 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 128
+2019-10-16 13:56:44,616 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 256
+2019-10-16 13:56:46,191 INFO  [main] algorithm.VehicleRoutingAlgorithm - iterations end at 500 iterations
+2019-10-16 13:56:46,191 INFO  [main] algorithm.VehicleRoutingAlgorithm - took 3.699 seconds
++--------------------------+
+| problem                  |
++---------------+----------+
+| indicator     | value    |
++---------------+----------+
+| noJobs        | 100      | 
+| noServices    | 100      | 
+| noShipments   | 0        | 
+| noBreaks      | 0        | 
+| fleetsize     | INFINITE | 
++--------------------------+
++----------------------------------------------------------+
+| solution                                                 |
++---------------+------------------------------------------+
+| indicator     | value                                    |
++---------------+------------------------------------------+
+| costs         | 128.52630938492362                       | 
+| noVehicles    | 5                                        | 
+| unassgndJobs  | 0                                        | 
++----------------------------------------------------------+
+2019-10-16 13:57:27,593 INFO  [main] problem.VehicleRoutingProblem - setup problem: [fleetSize=INFINITE][#jobs=100][#vehicles=1][#vehicleTypes=1][transportCost=[name=crowFlyCosts]][activityCosts=com.graphhopper.jsprit.core.problem.cost.WaitingTimeCosts@6afb943a]
+2019-10-16 13:57:27,600 INFO  [main] algorithm.VehicleRoutingAlgorithm - algorithm starts: [maxIterations=500]
+2019-10-16 13:57:27,600 INFO  [main] algorithm.InsertionInitialSolutionFactory - create initial solution
+2019-10-16 13:57:27,627 INFO  [main] algorithm.VehicleRoutingAlgorithm - iterations start
+2019-10-16 13:57:27,627 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 1
+2019-10-16 13:57:27,633 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 2
+2019-10-16 13:57:27,667 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 4
+2019-10-16 13:57:27,707 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 8
+2019-10-16 13:57:27,738 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 16
+2019-10-16 13:57:27,819 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 32
+2019-10-16 13:57:28,100 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 64
+2019-10-16 13:57:28,395 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 128
+2019-10-16 13:57:29,357 INFO  [main] algorithm.VehicleRoutingAlgorithm$Counter - iterations 256
+2019-10-16 13:57:30,889 INFO  [main] algorithm.VehicleRoutingAlgorithm - iterations end at 500 iterations
+2019-10-16 13:57:30,890 INFO  [main] algorithm.VehicleRoutingAlgorithm - took 3.29 seconds
++--------------------------+
+| problem                  |
++---------------+----------+
+| indicator     | value    |
++---------------+----------+
+| noJobs        | 100      | 
+| noServices    | 100      | 
+| noShipments   | 0        | 
+| noBreaks      | 0        | 
+| fleetsize     | INFINITE | 
++--------------------------+
++----------------------------------------------------------+
+| solution                                                 |
++---------------+------------------------------------------+
+| indicator     | value                                    |
++---------------+------------------------------------------+
+| costs         | 133.24595430281147                       | 
+| noVehicles    | 5                                        | 
+| unassgndJobs  | 0                                        | 
++----------------------------------------------------------+

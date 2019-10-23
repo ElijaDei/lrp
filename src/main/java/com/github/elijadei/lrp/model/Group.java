@@ -8,12 +8,12 @@ import static com.github.elijadei.lrp.Constants.DEPOT_COST;
 
 public class Group {
 
-    private Point depot;
+    private Point center;
     private List<Point> group;
     private Integer demand;
 
     public Group(Point depot, List<Point> group) {
-        this.depot = depot;
+        this.center = depot;
         this.group = group;
     }
 
@@ -26,11 +26,11 @@ public class Group {
     }
 
     public Point getDepot() {
-        return depot;
+        return center;
     }
 
     public void setDepot(Point depot) {
-        this.depot = depot;
+        this.center = depot;
     }
 
     public List<Point> getGroup() {

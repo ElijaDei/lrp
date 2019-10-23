@@ -39,7 +39,7 @@ public class VRPJsprit {
          * get a vehicle type-builder and build a type with the typeId "vehicleType" and a capacity of 2
          */
         final int WEIGHT_INDEX = 0;
-        VehicleTypeImpl.Builder vehicleTypeBuilder = VehicleTypeImpl.Builder.newInstance("vehicleType").addCapacityDimension(WEIGHT_INDEX, 10);
+        VehicleTypeImpl.Builder vehicleTypeBuilder = VehicleTypeImpl.Builder.newInstance("vehicleType").addCapacityDimension(WEIGHT_INDEX, 20);
         VehicleType vehicleType = vehicleTypeBuilder.build();
 
         Builder vehicleBuilder = Builder.newInstance("vehicle");
@@ -65,7 +65,7 @@ public class VRPJsprit {
 
         VehicleRoutingProblem problem = vrpBuilder.build();
         VehicleRoutingAlgorithm algorithm = Jsprit.Builder.newInstance(problem)
-                .setProperty(Jsprit.Parameter.ITERATIONS.toString(), "100")
+                .setProperty(Jsprit.Parameter.ITERATIONS.toString(), "500")
                 .buildAlgorithm();
         Collection<VehicleRoutingProblemSolution> solutions = algorithm.searchSolutions();
 

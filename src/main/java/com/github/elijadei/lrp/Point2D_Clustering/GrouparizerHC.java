@@ -26,12 +26,10 @@ public class GrouparizerHC {
     public List<List<Point2D>> points2GroupsByDistance(List<Point2D> list) {
         List<List<Point2D>> groupedPoints = new ArrayList<>();
 
-
         while (!list.isEmpty()) {
 
             List<Point2D> group = new ArrayList<>();
             List<Point2D.Double> centroids = new ArrayList<>();
-
 
             //to avoid nullPoint Exception
             if (list.size() >= this.minCountInGroup) {
@@ -47,11 +45,12 @@ public class GrouparizerHC {
                     centroids.add(centr);
 
                     //find nearest points (ot n nearest points) to centroid and add these to the group
-                    Neighbor<double[], Point2D>[] pointNext = sortPoints.knn(new double[]{centr.getX(), centr.getY()}, minCountInGroup);
+                    Neighbor<double[], Point2D> pointNext = sortPoints.nearest(new double[]{centr.getX(), centr.getY()});
+                    /*
                     for (Neighbor<double[], Point2D> nextPoints : pointNext) {
                         group.add(nextPoints.value);
                     }
-
+                    */
                     list.removeAll(group);
                     group.forEach(a -> System.out.println(a));
                     groupedPoints.add(group);
@@ -83,9 +82,8 @@ public class GrouparizerHC {
         for (int i = 0; i < xy.size(); i++) {
             sumY += xy.get(i).getY();
         }
-        Rectangle2D rect;
         Point2D.Double centroid = new Point2D.Double();
-        centroid.setLocation((double) sumX / xy.size(), sumY / xy.size());
+        centroid.setLocation( sumX / xy.size(), sumY / xy.size());
         System.out.println(" centroid " + centroid);
         return centroid;
 

@@ -92,7 +92,7 @@ public class RouteBuilder {
             depotcounter++;
         }
         //for(Coordinate depot  : Arrays.asList())
-        vrpBuilder.setFleetSize(VehicleRoutingProblem.FleetSize.FINITE);
+        vrpBuilder.setFleetSize(VehicleRoutingProblem.FleetSize.INFINITE);
 
         VehicleRoutingProblem vrp = vrpBuilder.build();
 
