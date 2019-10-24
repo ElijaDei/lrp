@@ -1,9 +1,5 @@
 package com.github.elijadei.lrp.Point2D_Clustering;
 
-import com.github.elijadei.lrp.clusterizing.SortPoint;
-import smile.neighbor.KDTree;
-import smile.neighbor.Neighbor;
-
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
@@ -37,8 +33,8 @@ public class GrouparizerHC {
             if (list.size() >= this.minCountInGroup) {
 
                 while (group.size() <= this.minCountInGroup) {
-                    SortPoint sortPoint = new SortPoint(list);
-                    KDTree<Point2D> sortPoints = sortPoint.sort();
+//                    SortPoint sortPoint = new SortPoint(list);
+//                    KDTree<Point2D> sortPoints = sortPoint.sort();
                     Point2D point = list.remove(0);
                     group.add(point);
 
@@ -47,10 +43,10 @@ public class GrouparizerHC {
                     centroids.add(centr);
 
                     //find nearest points (ot n nearest points) to centroid and add these to the group
-                    Neighbor<double[], Point2D>[] pointNext = sortPoints.knn(new double[]{centr.getX(), centr.getY()}, minCountInGroup);
-                    for (Neighbor<double[], Point2D> nextPoints : pointNext) {
-                        group.add(nextPoints.value);
-                    }
+//                    Neighbor<double[], Point2D>[] pointNext = sortPoints.knn(new double[]{centr.getX(), centr.getY()}, minCountInGroup);
+//                    for (Neighbor<double[], Point2D> nextPoints : pointNext) {
+//                        group.add(nextPoints.value);
+//                    }
 
                     list.removeAll(group);
                     group.forEach(a -> System.out.println(a));
