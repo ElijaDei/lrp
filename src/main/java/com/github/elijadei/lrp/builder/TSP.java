@@ -42,7 +42,7 @@ public class TSP {
          * get a vehicle type-builder and build a type with the typeId "vehicleType" and a capacity of 2
          */
         final int WEIGHT_INDEX = 0;
-        VehicleTypeImpl.Builder vehicleTypeBuilder = VehicleTypeImpl.Builder.newInstance("vehicleType").addCapacityDimension(WEIGHT_INDEX, 2);
+        VehicleTypeImpl.Builder vehicleTypeBuilder = VehicleTypeImpl.Builder.newInstance("vehicleType").addCapacityDimension(WEIGHT_INDEX, 1);
         VehicleType vehicleType = vehicleTypeBuilder.build();
 
         Builder vehicleBuilder = VehicleImpl.Builder.newInstance("vehicle");

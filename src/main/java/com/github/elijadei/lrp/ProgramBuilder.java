@@ -23,10 +23,13 @@ public class ProgramBuilder {
         this.superClusterer = superClusterer;
     }
 
+    /*
     public Integer letsDoIt() {
         List<Point> points = dataProvider.getPoints();
         points = superClusterer.minimizePoints(points);
         List<Group> groups = grouperizer.groupPoints(points);
         return router.buildRoutes(groups);
     }
+    */
+
 }

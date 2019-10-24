@@ -12,8 +12,8 @@ public class Group {
     private List<Point> group;
     private Integer demand;
 
-    public Group(Point depot, List<Point> group) {
-        this.center = depot;
+    public Group(Point center, List<Point> group) {
+        this.center = center;
         this.group = group;
     }
 
@@ -25,12 +25,12 @@ public class Group {
         this.demand = demand;
     }
 
-    public Point getDepot() {
+    public Point getCenter() {
         return center;
     }
 
-    public void setDepot(Point depot) {
-        this.center = depot;
+    public void setCenter(Point center) {
+        this.center = center;
     }
 
     public List<Point> getGroup() {
