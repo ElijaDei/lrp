@@ -1,21 +1,21 @@
 package com.github.elijadei.lrp.clusterizing;
 
+import com.github.elijadei.lrp.model.Point;
 import smile.neighbor.KDTree;
 
-import java.awt.geom.Point2D;
 import java.util.List;
 
 public class SortPoint {
 
-    private List<Point2D> points;
+    private List<Point> points;
 
-    public SortPoint(List<Point2D> points) {
+    public SortPoint(List<Point> points) {
         this.points = points;
     }
 
-    public KDTree<Point2D> sort() {
+    public KDTree<Point> sort() {
         double[][] keys = new double[points.size()][2];
-        Point2D[] data = new Point2D[points.size()];
+        Point[] data = new Point[points.size()];
         for (int i = 0; i < points.size(); i++) {
             data[i] = points.get(i);
         }
@@ -26,8 +26,8 @@ public class SortPoint {
         return new KDTree<>(keys, data);
     }
 
-    private double[] coordinates(Point2D point2D) {
-        return new double[]{point2D.getX(), point2D.getY()};
+    private double[] coordinates(Point Point) {
+        return new double[]{Point.getX(), Point.getY()};
     }
 
 }
