@@ -44,7 +44,7 @@ public class Group {
     public static Group fromCluster(CentroidCluster<Point> cluster) {
         Group group = new Group(Point.fromMathPoint(cluster.getCenter().getPoint()), cluster.getPoints());
         group.setDemand(group.getGroup().stream().map(Point::getDemand).reduce(Integer::sum).get() + DEPOT_COST);
-        return new Group(Point.fromMathPoint(cluster.getCenter().getPoint()), cluster.getPoints());
+        return group;
     }
 
 }
