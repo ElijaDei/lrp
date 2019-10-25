@@ -39,7 +39,7 @@ public class JspritMDVRPTest {
     @Test
     public void RoutingImpl() {
         RoutingInterfaceImpl impliment = new RoutingInterfaceImpl();
-        Double cost = impliment.buildRoutes(groups);
+        Double cost = impliment.calcRouteCost(groups);
 System.out.println(cost);
     }
 

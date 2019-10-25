@@ -21,64 +21,54 @@ import java.util.List;
 public class RoutingInterfaceImpl implements RoutingInterface {
 
     @Override
-    public Double buildRoutes(List<Group> pointGroups) {
+    public Double calcRouteCost(List<Group> pointGroups) {
 
-        int nuOfVehicles = 3;
-        int capacity = 80;
+        List<Double> costs = new ArrayList<>();
+        pointGroups.forEach(group -> {
+            final int WEIGHT_INDEX = 0;
+            VehicleTypeImpl.Builder vehicleTypeBuilder = VehicleTypeImpl.Builder.newInstance("vehicleType").addCapacityDimension(WEIGHT_INDEX, 1);
+            VehicleType vehicleType = vehicleTypeBuilder.build();
 
-        List<Double> costs =new ArrayList<>();
+            VehicleImpl.Builder vehicleBuilder = VehicleImpl.Builder.newInstance("vehicle");
+            vehicleBuilder.setStartLocation(Location.newInstance(group.getCenter().getX(), group.getCenter().getY()));
+            vehicleBuilder.setType(vehicleType);
+            VehicleImpl vehicle = vehicleBuilder.build();
 
+            int counter = 1;
+            List<Service> services = new ArrayList<Service>();
 
+            for (Point nods : group.getGroup()) {
+                Location location = Location.newInstance(nods.getX(), nods.getY()); //here Lan. and Lat.
+                Service.Builder builder = Service.Builder.newInstance(String.valueOf(counter))
+                        .addSizeDimension(0, 1).setLocation(location);
+                Service service = builder.build();
+                services.add(service);
+                counter++;
+            }
 
+            VehicleRoutingProblem.Builder vrpBuilder = VehicleRoutingProblem.Builder.newInstance();
+            vrpBuilder.addVehicle(vehicle).addAllJobs(services);
+            vrpBuilder.setFleetSize(VehicleRoutingProblem.FleetSize.INFINITE);
 
-        pointGroups.forEach(group->{
-        final int WEIGHT_INDEX = 0;
-        VehicleTypeImpl.Builder vehicleTypeBuilder = VehicleTypeImpl.Builder.newInstance("vehicleType").addCapacityDimension(WEIGHT_INDEX, 1);
-        VehicleType vehicleType = vehicleTypeBuilder.build();
-
-        VehicleImpl.Builder vehicleBuilder = VehicleImpl.Builder.newInstance("vehicle");
-        vehicleBuilder.setStartLocation(Location.newInstance(group.getCenter().getX(), group.getCenter().getY()));
-        vehicleBuilder.setType(vehicleType);
-        VehicleImpl vehicle = vehicleBuilder.build();
-
-        int counter = 1;
-        List<Service> services = new ArrayList<Service>();
-
-        for (Point nods : group.getGroup()) {
-            Location location = Location.newInstance(nods.getX(), nods.getY()); //here Lan. and Lat.
-            Service.Builder builder = Service.Builder.newInstance(String.valueOf(counter))
-                    .addSizeDimension(0, 1).setLocation(location);
-            Service service = builder.build();
-            services.add(service);
-            counter++;
-        }
-
-        VehicleRoutingProblem.Builder vrpBuilder = VehicleRoutingProblem.Builder.newInstance();
-        vrpBuilder.addVehicle(vehicle).addAllJobs(services);
-        vrpBuilder.setFleetSize(VehicleRoutingProblem.FleetSize.INFINITE);
-
-        VehicleRoutingProblem problem = vrpBuilder.build();
+            VehicleRoutingProblem problem = vrpBuilder.build();
 
 
+            VehicleRoutingAlgorithm vra = new SchrimpfFactory().createAlgorithm(problem);
+            Collection<VehicleRoutingProblemSolution> solutions = vra.searchSolutions();
+            VehicleRoutingProblemSolution bestSolution = Solutions.bestOf(solutions);
+            Double cost = bestSolution.getCost();
 
+            costs.add(cost);
+        });
 
-
-
-        VehicleRoutingAlgorithm vra = new SchrimpfFactory().createAlgorithm(problem);
-        Collection<VehicleRoutingProblemSolution> solutions = vra.searchSolutions();
-        VehicleRoutingProblemSolution bestSolution = Solutions.bestOf(solutions);
-        Double cost =  bestSolution.getCost();
-
-        costs.add(cost);
-    });
-
-        double costTotal=0;
+        double costTotal = 0;
         for (int i = 0; i < costs.size(); i++) {
-            costTotal = costTotal + costs.get(i);;
+            costTotal = costTotal + costs.get(i);
+            ;
         }
 
 
-return costTotal;
+        return costTotal;
 
     }
 }
