@@ -1,6 +1,6 @@
 package com.github.elijadei.lrp.builder;
 
-import com.github.elijadei.lrp.model.GroupWithDepot;
+import com.github.elijadei.lrp.model.Group;
 import com.github.elijadei.lrp.model.Point;
 import org.math.plot.Plot2DPanel;
 
@@ -11,9 +11,9 @@ import java.util.Random;
 
 public class Plotter {
 
-    private List<GroupWithDepot> groupWithDepots;
+    private List<Group> groupWithDepots;
 
-    public Plotter(List<GroupWithDepot> groupWithDepots) {
+    public Plotter(List<Group> groupWithDepots) {
         this.groupWithDepots = groupWithDepots;
     }
 
@@ -24,7 +24,7 @@ public class Plotter {
         groupWithDepots.forEach(nodes -> {
 
             // add a line plot to the PlotPanel
-            plot.addScatterPlot("center point", Color.RED, new double[][]{nodes.getDepot().getPoint()});
+            plot.addScatterPlot("center point", Color.RED, new double[][]{nodes.getCenter().getPoint()});
 
             int randoms = rand.nextInt(100);
             int randoms2 = rand.nextInt(255);

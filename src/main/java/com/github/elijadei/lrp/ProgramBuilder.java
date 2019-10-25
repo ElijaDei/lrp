@@ -1,8 +1,13 @@
 package com.github.elijadei.lrp;
 
+import com.github.elijadei.lrp.builder.Plotter;
 import com.github.elijadei.lrp.intefaces.GroupingInterface;
 import com.github.elijadei.lrp.intefaces.RoutingInterface;
 import com.github.elijadei.lrp.intefaces.SuperClusterInterface;
+import com.github.elijadei.lrp.model.Group;
+import com.github.elijadei.lrp.model.Point;
+
+import java.util.List;
 
 public class ProgramBuilder {
     private GroupingInterface grouperizer;
@@ -16,12 +21,11 @@ public class ProgramBuilder {
         this.superClusterer = superClusterer;
     }
 
-    /*
-    public Integer letsDoIt() {
+    public Double calcCost() {
         List<Point> points = superClusterer.minimizePoints();
         List<Group> groups = grouperizer.groupPoints(points);
-        return router.buildRoutes(groups);
+        new Plotter(groups).plot();
+        return router.calcRouteCost(groups);
     }
-    */
 
 }
