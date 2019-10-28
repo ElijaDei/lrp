@@ -15,6 +15,7 @@ public class SuperClusterer implements SuperClusterInterface {
     // That is test parameter, by default is 2;
     private Integer complexity = 2;
     private Double collapseRadius;
+    private Integer maxDemand;
     private List<Point> points;
 
     public SuperClusterer(Double collapseRadius, List<Point> points) {
@@ -26,12 +27,17 @@ public class SuperClusterer implements SuperClusterInterface {
         this.complexity = complexity;
     }
 
+    public void setMaxDemand(Integer maxDemand) {
+        this.maxDemand = maxDemand;
+    }
+
     @Override
     public List<Point> minimizePoints() {
         List<Point> result = new ArrayList<>();
         while (!points.isEmpty()) {
             Point startPoint = points.remove(0);
             List<Point> nearest = findNearest(startPoint);
+            filterByDemand(nearest, startPoint);
             if (!nearest.isEmpty()) {
                 points.removeAll(nearest);
                 nearest.add(startPoint);
@@ -47,13 +53,30 @@ public class SuperClusterer implements SuperClusterInterface {
         return result;
     }
 
+    private void filterByDemand(List<Point> nearest, Point startPoint) {
+        if (maxDemand != null && !nearest.isEmpty()) {
+            while (calculateDemandSum(nearest) + startPoint.getDemand() > maxDemand) {
+                nearest.remove(findFurthestOne(nearest, startPoint));
+            }
+        }
+    }
+
+    private Integer calculateDemandSum(List<Point> points) {
+        return points.stream().map(Point::getDemand).reduce(Integer::sum).get();
+    }
+
     private List<Point> findNearest(Point point) {
         return points.stream()
                 .filter(p -> MathArrays.distance(point.getPoint(), p.getPoint()) <= collapseRadius)
                 .sorted((p1, p2) -> comparePoints(point, p1, p2))
                 .limit(complexity)
                 .collect(Collectors.toList());
+    }
 
+    private Point findFurthestOne(List<Point> points, Point point) {
+        return points.stream()
+                .sorted((p1, p2) -> comparePoints(point, p2, p1))
+                .findFirst().get();
     }
 
     private int comparePoints(Point main, Point p1, Point p2) {
