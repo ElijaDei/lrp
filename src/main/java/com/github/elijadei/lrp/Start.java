@@ -13,8 +13,10 @@ public class Start {
     public static void main(String[] args) {
         DataProvider dataProvider = new FileDataProvider("input/r5000_2_test.dat");
         List<Point> points = dataProvider.getPoints();
+        SuperClusterer superClusterer = new SuperClusterer(2d, points);
+        superClusterer.setMaxDemand(500);
         ProgramBuilder programBuilder = new ProgramBuilder(new Grouping(points.size() / 10),
-                new RoutingInterfaceImpl(), new SuperClusterer(2d, points));
+                new RoutingInterfaceImpl(), superClusterer);
         System.out.println(programBuilder.calcCost());
     }
 }

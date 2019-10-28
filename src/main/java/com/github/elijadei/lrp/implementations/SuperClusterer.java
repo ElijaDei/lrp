@@ -56,13 +56,14 @@ public class SuperClusterer implements SuperClusterInterface {
     private void filterByDemand(List<Point> nearest, Point startPoint) {
         if (maxDemand != null && !nearest.isEmpty()) {
             while (calculateDemandSum(nearest) + startPoint.getDemand() > maxDemand) {
+                if (nearest.isEmpty()) return;
                 nearest.remove(findFurthestOne(nearest, startPoint));
             }
         }
     }
 
     private Integer calculateDemandSum(List<Point> points) {
-        return points.stream().map(Point::getDemand).reduce(Integer::sum).get();
+        return points.isEmpty() ? 0 : points.stream().map(Point::getDemand).reduce(Integer::sum).get();
     }
 
     private List<Point> findNearest(Point point) {
