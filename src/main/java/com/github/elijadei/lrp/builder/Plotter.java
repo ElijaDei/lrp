@@ -29,11 +29,12 @@ public class Plotter {
             int randoms = rand.nextInt(100);
             int randoms2 = rand.nextInt(255);
             int randoms3 = rand.nextInt(255);
-
-            for (int j = 0; j < nodes.getGroup().size(); j++) {
-                Point point = nodes.getGroup().get(j);
+            nodes.getGroup().forEach(initialPoints -> {
+            for (int j = 0; j < initialPoints.getInitialPoints().size(); j++) {
+                Point point = initialPoints.getInitialPoints().get(j);
                 plot.addScatterPlot("point", new Color(randoms, randoms3, randoms2), new double[][]{point.getPoint()});
             }
+            });
         });
 
         // put the PlotPanel in a JFrame, as a JPanel

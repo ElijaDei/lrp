@@ -2,6 +2,9 @@ package com.github.elijadei.lrp.model;
 
 import org.apache.commons.math3.ml.clustering.Clusterable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Point implements Clusterable {
 
     private Double x;
@@ -9,6 +12,8 @@ public class Point implements Clusterable {
     private Double y;
 
     private Integer demand;
+
+    private List<Point> initialPoints = new ArrayList<>();
 
     public Point(Double x, Double y) {
         this.x = x;
@@ -37,6 +42,15 @@ public class Point implements Clusterable {
     public void setDemand(Integer demand) {
         this.demand = demand;
     }
+
+    public List<Point> getInitialPoints() {
+        return initialPoints;
+    }
+
+    public void setInitialPoints(List<Point> initialPoints) {
+        this.initialPoints = initialPoints;
+    }
+
 
     @Override
     public double[] getPoint() {

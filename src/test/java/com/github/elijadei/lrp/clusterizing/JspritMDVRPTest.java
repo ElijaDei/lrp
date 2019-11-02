@@ -32,15 +32,15 @@ public class JspritMDVRPTest {
 
     private static List<Group> groups = new ArrayList<>(Arrays.asList(
             new Group(new Point (45.53,42.22),POINTS),
-            new Group(new Point (42.13,43.22),POINTS2)));
+            new Group(new Point (31.13,43.22),POINTS2)));
 
 
 
     @Test
     public void RoutingImpl() {
         RoutingInterfaceImpl impliment = new RoutingInterfaceImpl();
-        Double cost = impliment.calcRouteCost(groups);
-System.out.println(cost);
+        //Double cost = impliment.calcRouteCost(groups);
+//System.out.println(cost);
     }
 
 }

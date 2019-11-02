@@ -1,6 +1,6 @@
 package com.github.elijadei.lrp.builder;
 
-import com.github.elijadei.lrp.model.Node;
+import com.github.elijadei.lrp.model.XML_Nodes.Node;
 
 import java.io.FileNotFoundException;
 import java.util.List;

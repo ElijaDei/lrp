@@ -1,19 +1,22 @@
 package com.github.elijadei.lrp.implementations;
 
+import com.github.elijadei.lrp.intefaces.JspritInterface;
 import com.github.elijadei.lrp.intefaces.SuperClusterInterface;
+import com.github.elijadei.lrp.model.InitialGroupPoints;
 import com.github.elijadei.lrp.model.Point;
 import org.apache.commons.math3.ml.clustering.CentroidCluster;
 import org.apache.commons.math3.ml.clustering.KMeansPlusPlusClusterer;
 import org.apache.commons.math3.util.MathArrays;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class SuperClusterer implements SuperClusterInterface {
 
     // That is test parameter, by default is 2;
-    private Integer complexity = 2;
+    private Integer complexity=20;
     private Double collapseRadius;
     private Integer maxDemand;
     private List<Point> points;
@@ -22,6 +25,8 @@ public class SuperClusterer implements SuperClusterInterface {
         this.collapseRadius = collapseRadius;
         this.points = points;
     }
+
+    public List<Point>  getPoints() {return  points;}
 
     public void setComplexity(Integer complexity) {
         this.complexity = complexity;
@@ -34,6 +39,9 @@ public class SuperClusterer implements SuperClusterInterface {
     @Override
     public List<Point> minimizePoints() {
         List<Point> result = new ArrayList<>();
+        //List for initial groups of points, not collapsed
+
+
         while (!points.isEmpty()) {
             Point startPoint = points.remove(0);
             List<Point> nearest = findNearest(startPoint);
@@ -41,16 +49,22 @@ public class SuperClusterer implements SuperClusterInterface {
             if (!nearest.isEmpty()) {
                 points.removeAll(nearest);
                 nearest.add(startPoint);
+
+
                 KMeansPlusPlusClusterer<Point> clusterer = new KMeansPlusPlusClusterer<>(1);
                 List<CentroidCluster<Point>> cluster = clusterer.cluster(nearest);
                 Point point = Point.fromMathPoint(cluster.get(0).getCenter().getPoint());
                 point.setDemand(nearest.stream().map(Point::getDemand).reduce(Integer::sum).get());
+                point.setInitialPoints(nearest);
                 result.add(point);
             } else {
+                startPoint.setInitialPoints(Arrays.asList(startPoint));
                 result.add(startPoint);
+                //List for initial groups of points, not collapsed
+
             }
         }
-        return result;
+        return  result;
     }
 
     private void filterByDemand(List<Point> nearest, Point startPoint) {

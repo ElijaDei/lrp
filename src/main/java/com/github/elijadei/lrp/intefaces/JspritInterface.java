@@ -5,8 +5,7 @@ import com.github.elijadei.lrp.model.Point;
 
 import java.util.List;
 
-public interface GroupingInterface {
-
-    List<Group> groupPoints(List<Point> point);
-
+public interface JspritInterface {
+//we can not provide all the initial Points to Jsprit
+    List<Point> getInitialPoints();
 }

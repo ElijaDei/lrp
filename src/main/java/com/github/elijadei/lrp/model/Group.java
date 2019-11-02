@@ -10,6 +10,7 @@ public class Group {
     private Point center;
     private List<Point> group;
 
+
     public Group(Point center, List<Point> group) {
         this.center = center;
         this.group = group;
